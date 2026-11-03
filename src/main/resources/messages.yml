@@ -1,0 +1,20 @@
+# EepyEssentials · command and system messages (MiniMessage)
+# Module messages (join, chat, deaths, ...) are in the files under modules/.
+
+# Used by the <prefix> tag.
+prefix: "<gradient:#C9A6FF:#8DB6FF><bold>eepy</bold></gradient> <line>»</line> "
+
+no-permission: "<prefix><bad>You don't have permission to do that.</bad>"
+player-only: "<prefix><bad>This command can only be used in game.</bad>"
+player-not-found: "<prefix><bad>Player</bad> <text><name></text> <bad>is not online.</bad>"
+module-disabled: "<prefix><muted>The</muted> <text><module></text> <muted>module is disabled.</muted>"
+
+reload-success: "<prefix><good>Reloaded</good> <subtle>in <ms>ms · <enabled>/<total> modules active.</subtle>"
+reload-warnings: "<prefix><warn><count> warning(s) while loading. See the console for details.</warn>"
+reload-failed: "<prefix><bad>Could not reload <file>:</bad> <text><error></text> <subtle>The previous version stays active.</subtle>"
+
+module-enabled: "<prefix><good>Enabled</good> <text><module></text><subtle>. Saved to config.yml.</subtle>"
+module-disabled-now: "<prefix><warn>Disabled</warn> <text><module></text><subtle>. Saved to config.yml.</subtle>"
+module-already: "<prefix><text><module></text> <muted>is already <state>.</muted>"
+module-failed: "<prefix><bad><module> could not be enabled:</bad> <text><error></text>"
+unknown-module: "<prefix><bad>Unknown module</bad> <text><module></text><subtle>. Available: <modules></subtle>"

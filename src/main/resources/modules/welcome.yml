@@ -1,0 +1,64 @@
+# EepyWelcome · join and leave messages
+#
+# Tags: <player> (name), <online> (players online), <max> (slots), plus the
+# colour, branding and link tags from config.yml.
+# Sounds: "namespace:sound volume pitch", e.g. "minecraft:block.amethyst_block.chime 0.8 1.2"
+# Leave a text empty ("") to skip it.
+
+join:
+  # Public message everyone sees.
+  public:
+    # false = nobody sees a join message (the vanilla one is removed too).
+    enabled: true
+    # false = keep the vanilla "Steve joined the game" and send nothing extra.
+    replace-vanilla: true
+    first-join: "<gradient:#C9A6FF:#8DB6FF>✦</gradient> <text>Please welcome</text> <highlight><player></highlight> <text>to <primary>eepy</primary>!</text>"
+    returning: "<good>+</good> <text><player></text>"
+    # Checked top to bottom for returning players; the first permission that
+    # matches replaces "returning". Example for staff:
+    groups: []
+    #  - permission: "eepyessentials.welcome.staff"
+    #    message: "<primary>+</primary> <highlight><player></highlight> <subtle>· staff</subtle>"
+
+  # Personal welcome, only for the player who joined.
+  personal:
+    enabled: true
+    # Wait a moment so it is not lost between other join messages (20 ticks = 1 s).
+    delay-ticks: 30
+    first-join:
+      chat:
+        - ""
+        - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Welcome to eepy!</bold></gradient>"
+        - "<text>We're happy to have you here.</text>"
+        - "<muted>Website</muted> <website_link>  <line>·</line>  <muted>Discord</muted> <discord_link>"
+        - ""
+      title: "<gradient:#C9A6FF:#8DB6FF><bold>e e p y</bold></gradient>"
+      subtitle: "<text>Welcome, <highlight><player></highlight>!</text>"
+      actionbar: ""
+      sound: "minecraft:block.amethyst_block.chime 0.9 1.2"
+    returning:
+      chat:
+        - ""
+        - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Welcome back, <player>!</bold></gradient>"
+        - "<text>Enjoy your time on eepy.</text> <subtle><online> online right now.</subtle>"
+        - ""
+      title: ""
+      subtitle: ""
+      actionbar: "<text>Welcome back, <highlight><player></highlight></text> <primary>☾</primary>"
+      sound: "minecraft:block.amethyst_block.chime 0.6 1.4"
+    # Title timing in ticks.
+    title-fade-in: 10
+    title-stay: 50
+    title-fade-out: 20
+
+leave:
+  # false = nobody sees a leave message (the vanilla one is removed too).
+  enabled: true
+  replace-vanilla: true
+  message: "<subtle>-</subtle> <muted><player></muted>"
+  groups: []
+  #  - permission: "eepyessentials.welcome.staff"
+  #    message: "<subtle>-</subtle> <muted><player> · staff</muted>"
+
+# Players hidden by vanish plugins ("vanished" metadata) get no public messages.
+hide-vanished: true

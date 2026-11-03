@@ -1,0 +1,61 @@
+# ╭──────────────────────────────────────────────────────────────────────────╮
+# │                        E e p y E s s e n t i a l s                        │
+# │        quality of life & design for mc.eepy.at · matches EepyTab         │
+# ╰──────────────────────────────────────────────────────────────────────────╯
+#
+# Every module has its own file in plugins/EepyEssentials/modules/.
+# Messages for commands live in messages.yml.
+# Texts use MiniMessage: https://docs.advntr.dev/minimessage/format.html
+#
+# Apply changes with /eepyessentials reload. A file with a YAML error is
+# rejected and its previous version stays active. Missing keys fall back to
+# the defaults, and EepyEssentials never overwrites your files.
+#
+# ── Tags available in every message ───────────────────────────────────────────
+#   Colours        <primary> <secondary> <highlight> <text> <muted> <subtle>
+#                  <line> <good> <warn> <bad>          (see "palette")
+#   Branding       <server_name> <ip> <website> <discord>
+#   Clickable      <website_link> <discord_link>       (open the link on click)
+#   Prefix         <prefix>                            (see messages.yml)
+
+config-version: 1
+
+# Turn whole modules on or off. Disabled modules register no listeners, run no
+# tasks and leave vanilla behaviour untouched. Also /eepyessentials module.
+modules:
+  welcome: true
+  chat: true
+  achievements: true
+  sleep: true
+  announcements: true
+  deaths: true
+
+branding:
+  server-name: "eepy"
+  ip: "mc.eepy.at"
+  website: "eepy.at"
+  website-url: "https://eepy.at"
+  discord: "dsc.gg/muezza"
+  discord-url: "https://dsc.gg/muezza"
+
+# Same palette as EepyTab and EepyMOTD.
+palette:
+  primary: "#B98CFF"     # soft violet
+  secondary: "#8DB6FF"   # soft blue
+  highlight: "#F3EEFF"   # near white with a lavender tint
+  text: "#DCD3F5"        # body text
+  muted: "#9C93BD"       # labels
+  subtle: "#6F6890"      # secondary info
+  line: "#4B4566"        # dividers and dots
+  good: "#8EE8C0"        # mint
+  warn: "#FFD48A"        # warm sand
+  bad: "#FF8FA3"         # soft rose
+
+integrations:
+  # Use LuckPerms (if installed) for chat ranks, prefixes and suffixes.
+  luckperms: true
+
+compatibility:
+  # Warn at startup about plugins that handle the same things (chat, join
+  # messages, sleep, death messages, announcements).
+  warn-about-overlapping-plugins: true

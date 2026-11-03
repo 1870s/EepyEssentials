@@ -1,0 +1,57 @@
+name: EepyEssentials
+version: '${version}'
+main: at.eepy.essentials.EepyEssentials
+api-version: '${apiVersion}'
+description: Modular quality of life and design for the eepy survival server - mc.eepy.at
+author: eepy
+website: https://eepy.at
+softdepend:
+  - LuckPerms
+
+# Commands are registered with Paper's Brigadier API, see EssentialsCommands.
+permissions:
+  eepyessentials.admin:
+    description: Full access to all EepyEssentials admin commands.
+    default: op
+    children:
+      eepyessentials.reload: true
+      eepyessentials.modules: true
+      eepyessentials.debug: true
+      eepyessentials.announce: true
+      eepyessentials.chat.clear: true
+      eepyessentials.chat.clear.bypass: true
+      eepyessentials.chat.bypass: true
+      eepyessentials.death.location.others: true
+  eepyessentials.reload:
+    description: Reload the configuration.
+    default: op
+  eepyessentials.modules:
+    description: List modules and switch them on or off.
+    default: op
+  eepyessentials.debug:
+    description: Show technical information.
+    default: op
+  eepyessentials.announce:
+    description: Send announcements with /eepyannounce.
+    default: op
+  eepyessentials.chat.clear:
+    description: Clear the chat with /eepychat clear.
+    default: op
+  eepyessentials.chat.clear.bypass:
+    description: Keep your chat when it is cleared.
+    default: op
+  eepyessentials.chat.bypass:
+    description: Not affected by the chat anti-spam.
+    default: op
+  eepyessentials.chat.format:
+    description: Use colour and style tags in chat messages.
+    default: op
+  eepyessentials.chat.pm:
+    description: Use /pm and /reply (when private messages are enabled).
+    default: true
+  eepyessentials.death.location:
+    description: See your own last death position with /lastdeath.
+    default: true
+  eepyessentials.death.location.others:
+    description: See the last death position of other players.
+    default: op

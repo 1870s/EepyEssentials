@@ -1,0 +1,59 @@
+# EepyAnnouncements · calm automatic announcements
+#
+# One announcement every "interval-minutes", never right after a restart,
+# never twice in a row, and only while players are online.
+
+interval-minutes: 15
+# Wait this long after the server (or this module) starts.
+initial-delay-minutes: 10
+# RANDOM (no direct repeats) or SEQUENTIAL.
+order: RANDOM
+# Only announce when at least this many players are online.
+min-players: 1
+# Sound for every announcement ("" = none).
+sound: "minecraft:block.amethyst_block.resonate 0.4 1.6"
+
+# Format of /eepyannounce <message>. Tag: <message>, <player> (sender)
+manual:
+  - ""
+  - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Announcement</bold></gradient>"
+  - "<text><message></text>"
+  - ""
+manual-sound: "minecraft:block.note_block.chime 0.6 1.2"
+
+# Each announcement:
+#   lines:      chat lines (MiniMessage; <website_link>/<discord_link> are clickable)
+#   actionbar:  optional action bar text
+#   title / subtitle: optional title (use sparingly)
+#   permission: only players with this permission receive it
+#   worlds:     only players in these worlds receive it
+#   days / from / to:  only active on these weekdays / between these times
+#   enabled:    false = skip it
+announcements:
+  website:
+    lines:
+      - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Stay connected</bold></gradient>"
+      - "<text>Visit our website</text> <website_link> <subtle>· rules, guides & news</subtle>"
+  discord:
+    lines:
+      - "<gradient:#C9A6FF:#8DB6FF><bold>✦ eepy community</bold></gradient>"
+      - "<text>Join our Discord</text> <discord_link> <subtle>· events & support</subtle>"
+  invite:
+    lines:
+      - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Bring your friends</bold></gradient>"
+      - "<text>Invite them to</text> <highlight><ip></highlight> <primary>☾</primary>"
+  rules:
+    lines:
+      - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Play fair</bold></gradient>"
+      - "<text>Be kind, no griefing, no cheats.</text> <subtle>Full rules:</subtle> <website_link>"
+  evening-event:
+    enabled: false
+    days: [FRIDAY, SATURDAY]
+    from: "18:00"
+    to: "22:00"
+    lines:
+      - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Community evening</bold></gradient>"
+      - "<text>Join us at spawn tonight!</text>"
+
+# Time zone for days/from/to.
+timezone: "Europe/Vienna"

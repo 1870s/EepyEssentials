@@ -1,0 +1,49 @@
+# EepyDeaths · styled death messages and death coordinates
+#
+# The vanilla death message is kept as it is (exact cause, killer, weapon,
+# shown in each player's own language) and only gets a symbol and colours.
+# Inventory, XP, drops and respawn are never touched.
+#
+# Tags in formats: <message> (the vanilla death message), <player>
+
+# false = no public death messages at all.
+public: true
+
+formats:
+  # Killed by another player.
+  pvp: "<bad>⚔</bad> <message>"
+  # Killed by a mob.
+  mob: "<bad>☠</bad> <message>"
+  # Falling, lava, drowning, explosions, ...
+  environment: "<muted>☠</muted> <message>"
+
+# Colour of the death message text and of the names inside it.
+message-color: "#DCD3F5"
+name-color: "#F3EEFF"
+
+# Damage types whose deaths are never announced publicly,
+# e.g. "minecraft:fall", "minecraft:lava", "minecraft:generic_kill".
+hidden-damage-types: []
+
+# Private note for the player who died. Coordinates are never sent to others.
+coordinates:
+  enabled: true
+  # Tags: <x> <y> <z> <world> (e.g. "Overworld"), <world_name>
+  chat:
+    - "<muted>Your last death:</muted> <highlight>X: <x></highlight> <line>|</line> <highlight>Y: <y></highlight> <line>|</line> <highlight>Z: <z></highlight> <subtle>· <world></subtle>"
+  # Clicking the coordinates copies "x y z" to the clipboard.
+  clickable: true
+  actionbar: ""
+  sound: ""
+
+# /lastdeath uses the death position that Minecraft itself stores (the same
+# one the recovery compass points to), so nothing extra is saved.
+last-death:
+  header: "<prefix><text>Your last death</text>"
+  header-other: "<prefix><text>Last death of</text> <highlight><player></highlight>"
+  none: "<prefix><muted>No death recorded yet.</muted>"
+
+world-names:
+  NORMAL: "Overworld"
+  NETHER: "Nether"
+  THE_END: "The End"

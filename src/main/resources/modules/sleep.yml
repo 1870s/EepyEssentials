@@ -1,0 +1,40 @@
+# EepySleep · shows sleep progress
+#
+# Skipping the night is done by vanilla through the game rule
+# "playersSleepingPercentage". This module only DISPLAYS the progress, using
+# exactly the vanilla rules: spectators and players marked as "sleeping
+# ignored" are not counted, at least one sleeper is always needed.
+#
+# Tags: <player>, <sleeping>, <needed>, <eligible>, <percentage>, <world>
+
+# Where the progress is shown: BOSSBAR, ACTIONBAR, CHAT. Use [] to show nothing.
+# Note: vanilla already shows its own "x/y players sleeping" in the action bar,
+# so ACTIONBAR competes with it; BOSSBAR is the clean choice.
+display: [BOSSBAR]
+
+bossbar:
+  text: "<primary>☾</primary> <text><sleeping>/<needed> players sleeping</text><subtle>...</subtle>"
+  # PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  color: PURPLE
+  # PROGRESS, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
+  style: PROGRESS
+actionbar: "<primary>☾</primary> <text><sleeping>/<needed> players sleeping</text>"
+chat: "<primary>☾</primary> <text><sleeping>/<needed> players sleeping</text>"
+
+messages:
+  # Shown in chat to the world when someone goes to bed / gets up ("" = off).
+  bed-enter: "<primary>☾</primary> <highlight><player></highlight> <text>went to bed</text> <subtle>(<sleeping>/<needed>)</subtle>"
+  bed-leave: ""
+  # When the night is skipped by sleeping.
+  night-skipped: "<warn>☀</warn> <text>Good morning! The night was skipped.</text>"
+
+# OPTIONAL gameplay change: set the vanilla game rule playersSleepingPercentage
+# for these worlds when the module starts. -1 or missing = do not touch the rule.
+# 100 = everyone must sleep, 50 = half, 1 = a single player is enough.
+percentage:
+  default: -1
+  worlds: {}
+  #  world: 50
+
+# Worlds where nothing is shown (the night can still be skipped normally).
+disabled-worlds: []

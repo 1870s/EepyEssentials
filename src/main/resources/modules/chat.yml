@@ -1,0 +1,115 @@
+# EepyChat · chat design, ranks, anti-spam, chat clear and private messages
+#
+# The chat module only changes how messages LOOK. It uses Paper's chat
+# renderer, so the signed message content is never modified and chat
+# reporting/secure chat keeps working.
+
+# Line format. Tags:
+#   <rank_prefix> <rank_suffix>   prefix/suffix of the rank (see "ranks")
+#   <name>                        player name with colour, hover and click
+#   <player>                      plain player name
+#   <rank>                        rank name, e.g. "Owner"
+#   <message>                     the message in the rank's message colour
+#   <world>                       world the player is in
+format: "<rank_prefix><name><rank_suffix> <line>›</line> <message>"
+
+name:
+  # Lines shown when hovering a name. Tags: <player> <rank> <world>
+  hover:
+    - "<highlight><player></highlight>"
+    - "<muted>Rank</muted> <text><rank></text>"
+    - "<muted>World</muted> <text><world></text>"
+    - ""
+    - "<subtle>Click to send a message</subtle>"
+  # Clicking a name: SUGGEST_MESSAGE (puts "/msg <player> " in the chat box) or NONE.
+  click: SUGGEST_MESSAGE
+
+# Turn links in player messages into clickable links.
+clickable-links: true
+
+# Players with this permission may use colour and style tags in chat,
+# e.g. <green>, <bold>, <#B98CFF>. Clicks, hovers and other tags are never allowed.
+format-permission: "eepyessentials.chat.format"
+
+ranks:
+  # Where prefixes come from:
+  #   CONFIG    = the prefixes below
+  #   LUCKPERMS = the LuckPerms prefix/suffix (colours below still apply)
+  #   AUTO      = the prefixes below; LuckPerms prefix for groups not listed here
+  prefix-source: AUTO
+  # Rank for players without a matching group / permission.
+  default-rank: member
+  # Same ranks and look as the EepyTab player list. Without LuckPerms the rank
+  # is chosen by the permission "eepyessentials.rank.<id>" (never given by default).
+  list:
+    owner:
+      display-name: "Owner"
+      priority: 100
+      prefix: "<gradient:#C9A6FF:#8DB6FF><bold>OWNER</bold></gradient> <line>│</line> "
+      name-color: "#F3EEFF"
+      message-color: "#F3EEFF"
+      luckperms-groups: ["owner"]
+    admin:
+      display-name: "Admin"
+      priority: 90
+      prefix: "<#FF8FA3><bold>ADMIN</bold></#FF8FA3> <line>│</line> "
+      name-color: "#FFE3E9"
+      message-color: "#F3EEFF"
+      luckperms-groups: ["admin"]
+    developer:
+      display-name: "Developer"
+      priority: 80
+      prefix: "<#7FD3FF><bold>DEV</bold></#7FD3FF> <line>│</line> "
+      name-color: "#E2F4FF"
+      message-color: "#F3EEFF"
+      luckperms-groups: ["developer", "dev"]
+    moderator:
+      display-name: "Moderator"
+      priority: 70
+      prefix: "<#8EE8C0><bold>MOD</bold></#8EE8C0> <line>│</line> "
+      name-color: "#E3FBF1"
+      message-color: "#F3EEFF"
+      luckperms-groups: ["moderator", "mod"]
+    vip:
+      display-name: "VIP"
+      priority: 20
+      prefix: "<#FFD48A><bold>VIP</bold></#FFD48A> <line>│</line> "
+      name-color: "#FFF4DF"
+      message-color: "#DCD3F5"
+      luckperms-groups: ["vip"]
+    member:
+      display-name: "Member"
+      priority: 0
+      prefix: ""
+      name-color: "#CFC6EA"
+      message-color: "#DCD3F5"
+      luckperms-groups: ["default", "member"]
+
+anti-spam:
+  enabled: true
+  # Minimum time between two messages of one player.
+  cooldown-ms: 1000
+  # The same message again within this many seconds is blocked.
+  repeat-seconds: 15
+  bypass-permission: "eepyessentials.chat.bypass"
+  too-fast: "<prefix><muted>Slow down a little, please.</muted>"
+  repeated: "<prefix><muted>You just sent that message.</muted>"
+
+clear:
+  lines: 100
+  # Players with this permission keep their chat.
+  bypass-permission: "eepyessentials.chat.clear.bypass"
+  message: "<prefix><text>The chat was cleared by</text> <highlight><player></highlight><text>.</text>"
+
+# Plugin private messages: /pm <player> <message> (alias /dm) and /reply (/r).
+# Off by default: the vanilla /msg stays available and is the only one that
+# supports Minecraft's chat signing. Private messages are never logged or changed.
+private-messages:
+  enabled: false
+  to-sender: "<subtle>to</subtle> <highlight><target></highlight> <line>›</line> <text><message></text>"
+  to-target: "<subtle>from</subtle> <highlight><player></highlight> <line>›</line> <text><message></text>"
+  no-reply: "<prefix><muted>Nobody to reply to.</muted>"
+
+# Event priority of the chat listener: LOWEST, LOW, NORMAL, HIGH, HIGHEST.
+# Later priorities run after (and can override) other chat plugins.
+listener-priority: NORMAL

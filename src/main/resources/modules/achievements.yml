@@ -1,0 +1,43 @@
+# EepyAchievements · nicer advancement messages
+#
+# Only the chat message is restyled. Advancements, toasts, rewards and the
+# advancement screen work exactly like in vanilla. Advancements that vanilla
+# does not announce (hidden ones, recipes, gamerule announceAdvancements=false)
+# are not announced here either.
+#
+# Tags: <player>, <advancement> (name with its description on hover),
+# <advancement_plain> (name only), <description>
+
+# false = no public advancement messages at all.
+public: true
+
+formats:
+  task: "<gradient:#C9A6FF:#8DB6FF>✦</gradient> <highlight><player></highlight> <text>has made the advancement</text> <advancement>"
+  goal: "<secondary>◆</secondary> <highlight><player></highlight> <text>has reached the goal</text> <advancement>"
+  challenge: "<warn>★</warn> <highlight><player></highlight> <text>has completed the challenge</text> <advancement>"
+
+# Colour of the advancement name per type.
+colors:
+  task: "#B98CFF"
+  goal: "#8DB6FF"
+  challenge: "#FFD48A"
+
+# Feedback only for the player who earned it (vanilla toasts still show).
+personal:
+  challenge:
+    title: ""
+    subtitle: ""
+    actionbar: "<warn>★</warn> <text>Challenge complete:</text> <warn><advancement_plain></warn>"
+    sound: ""
+  goal:
+    actionbar: ""
+    sound: ""
+  task:
+    actionbar: ""
+    sound: ""
+
+# Sound for everyone online when someone completes a challenge ("" = none).
+challenge-broadcast-sound: ""
+
+# Advancements that never get a public message, e.g. "minecraft:story/mine_stone".
+excluded: []
