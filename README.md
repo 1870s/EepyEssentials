@@ -44,7 +44,7 @@ Every module can be switched on or off on its own (`config.yml` or `/eepyessenti
 Enjoy your time on eepy. 4 online right now.
 ```
 
-- New players get "Welcome to eepy!" with the website and Discord as clickable links, plus a title.
+- New players get "Welcome to eepy!" with the website and Discord as clickable links. Everyone gets the **e e p y** title: "Welcome, Steve!" on the first join, "Welcome back, Steve!" afterwards.
 - The vanilla message is replaced in the same event, so it never shows twice. `replace-vanilla: false` keeps vanilla; `enabled: false` removes join or leave lines entirely.
 - Permission groups can get their own public join/leave line (`groups:`), e.g. for staff.
 - Title, subtitle, action bar, chat and sound can each be turned on or off, and the private greeting has a configurable delay.

@@ -42,9 +42,9 @@ join:
         - "<gradient:#C9A6FF:#8DB6FF><bold>✦ Welcome back, <player>!</bold></gradient>"
         - "<text>Enjoy your time on eepy.</text> <subtle><online> online right now.</subtle>"
         - ""
-      title: ""
-      subtitle: ""
-      actionbar: "<text>Welcome back, <highlight><player></highlight></text> <primary>☾</primary>"
+      title: "<gradient:#C9A6FF:#8DB6FF><bold>e e p y</bold></gradient>"
+      subtitle: "<text>Welcome back, <highlight><player></highlight>!</text> <primary>☾</primary>"
+      actionbar: ""
       sound: "minecraft:block.amethyst_block.chime 0.6 1.4"
     # Title timing in ticks.
     title-fade-in: 10
